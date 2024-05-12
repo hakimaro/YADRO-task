@@ -66,6 +66,10 @@ ComputerClub read_club_parameters(ifstream &in) {
     Time start_time = to_time(times_match[1]);
     Time end_time = to_time(times_match[4]);
 
+    if (end_time < start_time) {
+        throw two_times_line;
+    }
+
     string price_per_hour_line;
     getline(in, price_per_hour_line);
     if (!regex_match(price_per_hour_line, r_number)) {

@@ -22,6 +22,8 @@ ComputerClub::ComputerClub(const uint16_t count_of_tables, const Time start_time
 void ComputerClub::start_working(queue<IncomingEvent> events)
 {
     m_tables.clear();
+    m_queue.clear();
+    m_clients_inside.clear();
     m_tables.resize(m_count_of_tables);
 
     cout << m_start_time << endl;
@@ -114,6 +116,7 @@ void ComputerClub::process_client_sat_down(const IncomingEvent &event)
     if (m_tables[event.place.value() - 1].current_client.id != string()) {
         throw OutgoingEvent(event.time, OutgoingEventType::Error, "PlaceIsBusy");
     }
+
     if (table_number == -1 && queue_position == m_queue.end() && clients_inside_position == m_clients_inside.end())
     {
         throw OutgoingEvent(event.time, OutgoingEventType::Error, "ClientUnknown");
@@ -138,12 +141,12 @@ void ComputerClub::process_client_waiting(const IncomingEvent &event)
     auto queue_position = find(m_queue.begin(), m_queue.end(), event.id);
     auto clients_inside_position = find(m_clients_inside.begin(), m_clients_inside.end(), event.id);
 
-    if (find_client_at_table(string()) != -1) {
-        throw OutgoingEvent(event.time, OutgoingEventType::Error, "ICanWaitNoLonger");
-    }
-
     if (table_number == -1 && queue_position == m_queue.end() && clients_inside_position == m_clients_inside.end()) {
         throw OutgoingEvent(event.time, OutgoingEventType::Error, "ClientUnknown");
+    }
+
+    if (find_client_at_table(string()) != -1) {
+        throw OutgoingEvent(event.time, OutgoingEventType::Error, "ICanWaitNoLonger");
     }
 
     if (table_number != -1) {
@@ -155,7 +158,6 @@ void ComputerClub::process_client_waiting(const IncomingEvent &event)
     }
 
     if (m_queue.size() > m_count_of_tables) {
-        m_clients_inside.erase(clients_inside_position);
         throw OutgoingEvent(event.time, OutgoingEventType::ClientGone, event.id);
     }
 
