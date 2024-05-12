@@ -24,28 +24,28 @@
 ## Примеры работы
 1. ```test.txt``` - Пример из задания
 
-![alt text](images/test.png)
+![test](images/test.png)
 
 2. ```test1.txt``` - Пример обработки ошибки ClientUnknown
 
-![alt text](images/test1.png)
+![test1](images/test1.png)
 
 3. ```test2.txt``` - Пример работы с очередью ожидания (добавление в неё, посадка первого ожидающего после ухода клиента, сидящего за столом, уход из клуба, если размер очереди больше числа столов, обработка ошибки "ICanWaitNoLonger")
 
-![alt text](images/test2.png)
+![test2](images/test2.png)
 
 4. ```test3.txt``` - Пример пересадки человека с одного стола на другой
 
-![alt text](images/test3.png)
+![test3](images/test3.png)
 
 5. ```test4.txt``` - Пример вывода клиентов в алфавитном порядке при закрытии клуба
 
-![alt text](images/test4.png)
+![test4](images/test4.png)
 
 6. ```test5.txt``` - Пример обработки ошибки ввода времени
 
-![alt text](images/test5.png)
+![test5](images/test5.png)
 
 7. ```test6.txt``` - Пример обработки ошибки последовательности событий по времени (должны быть по возрастанию)
 
-![alt text](images/test6.png)
+![test6](images/test6.png)
