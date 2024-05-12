@@ -5,21 +5,31 @@
 
 Клонирование репозитория
 
-```git clone https://github.com/hakimaro/YADRO-task```
+```
+git clone https://github.com/hakimaro/YADRO-task
+```
 
 Переход в рабочую папку
 
-```cd YADRO-task```
+```
+cd YADRO-task
+```
 
 Сборка проекта
 
-```cmake -S . -B build```
+```
+cmake -S . -B build
+```
 
-```cmake --build build```
+```
+cmake --build build
+```
 
 Запуск проекта
 
-```build/YADRO_task tests/test.txt```
+```
+build/YADRO_task tests/test.txt
+```
 
 ## Примеры работы
 1. ```test.txt``` - Пример из задания
